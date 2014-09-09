@@ -16,6 +16,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 """ vim-airline config
 " Display open buffers if only one tab page is open
 let g:airline#extensions#tabline#enabled = 1
+" Always display status line
+set laststatus=2
 
 """ Personal recommended settigns
 " Use tab characters and lett hem be 4 characters wide
