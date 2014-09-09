@@ -24,5 +24,6 @@ set laststatus=2
 set tabstop=4
 set shiftwidth=4
 " Line numbers
-set nu
-
+set number
+" Preferred colorscheme
+colorscheme 256-jungle
