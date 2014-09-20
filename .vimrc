@@ -27,3 +27,9 @@ set shiftwidth=4
 set number
 " Preferred colorscheme
 colorscheme 256-jungle
+
+" buffer mappings
+map bn :bn<CR>
+map bN :bp<CR>
+set hidden
+
