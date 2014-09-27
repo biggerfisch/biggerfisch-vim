@@ -13,6 +13,11 @@ map <C-n> :NERDTreeTabsToggle<CR>
 " Close vim if only a NERDTree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Store session
+set sessionoptions+=resize,winpos,buffers,folds,tabpages,options
+autocmd VimLeave * :mksession! ~/.vim/Session.vim
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :source ~/.vim/Session.vim | :bd 1 | endif
+
 """ vim-airline config
 " Display open buffers if only one tab page is open
 let g:airline#extensions#tabline#enabled = 1
@@ -33,3 +38,10 @@ map bn :bn<CR>
 map bN :bp<CR>
 set hidden
 
+syntax on
+
+" folding  
+augroup vimrc
+	au BufReadPre * setlocal foldmethod=indent
+	au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
