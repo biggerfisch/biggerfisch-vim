@@ -38,10 +38,14 @@ map bn :bn<CR>
 map bN :bp<CR>
 set hidden
 
+" Force syntax highlighting again
 syntax on
+
+" Start folds all open
+set foldlevelstart=50
 
 " folding  
 augroup vimrc
-	au BufReadPre * setlocal foldmethod=indent
-	au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+	au BufReadPre * setlocal foldmethod=syntax
+	au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 augroup END
