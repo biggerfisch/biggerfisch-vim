@@ -36,6 +36,8 @@ colorscheme 256-jungle
 " buffer mappings
 map bn :bn<CR>
 map bN :bp<CR>
+map <F5> :bp<CR>
+map <F6> :bn<CR>
 set hidden
 
 " Force syntax highlighting again
