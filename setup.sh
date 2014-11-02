@@ -15,6 +15,7 @@ echo -e "${green}Installing pathogen..."
 ./install_pathogen.sh > /dev/null || error_exit "Could not install pathogen!"
 echo -e "${green}Retrieving plugins...${NC}"
 git submodule update --init > /dev/null || error_exit "Failed to get plugins!"
+git submodule foreach git checkout master
 echo -e "${green}Linking .vimrc to home directory...${NC}"
 ./link_rc.sh || error_exit "Failed to setup .vimrc"
 echo -e "${green}Done!${NC}"
