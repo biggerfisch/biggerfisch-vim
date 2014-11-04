@@ -16,6 +16,7 @@ function error_exit
 
 git pull || error_exit 'Could not update main repo'
 
+git submodule init || error_exit 'Could not init submodules'
 git submodule foreach git checkout master || error_exit 'Could not checkout master on one or more plugins!'
 git submodule foreach git pull || error_exit 'Could not update one or more plugins'
 echo -e "${green}Done!${NC}"
