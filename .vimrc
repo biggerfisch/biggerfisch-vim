@@ -14,7 +14,7 @@ map <C-n> :NERDTreeTabsToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Store session
-set sessionoptions+=resize,winpos,buffers,folds,tabpages,options
+set sessionoptions+=resize,winpos,buffers,tabpages,options
 autocmd VimLeave * :mksession! ~/.vim/Session.vim
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :source ~/.vim/Session.vim | :bd 1 | endif
 
@@ -46,8 +46,14 @@ syntax on
 " folding  
 augroup vimrc
 	au BufReadPre * setlocal foldmethod=syntax
-	au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+"	au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 augroup END
 
 " Start folds all open
 set foldlevelstart=50
+
+"These snippets set the fold mechanism so that inserting a new brace does not
+"open random folds
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
