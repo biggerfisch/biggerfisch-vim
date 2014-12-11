@@ -30,8 +30,15 @@ set tabstop=4
 set shiftwidth=4
 " Line numbers
 set number
-" Preferred colorscheme
-colorscheme 256-jungle
+" This lets the background color stay the same inside of tmux/screen
+if &term =~ '256color'
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+	set t_ut=
+	" Preferred colorscheme
+	colorscheme 256-jungle
+endif
 
 " buffer mappings
 map bn :bn<CR>
@@ -56,4 +63,5 @@ set foldlevelstart=50
 "open random folds
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
 
