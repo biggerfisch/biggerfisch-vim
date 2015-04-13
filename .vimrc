@@ -14,9 +14,9 @@ map <C-n> :NERDTreeTabsToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Store session
-set sessionoptions+=resize,winpos,buffers,tabpages,options
-autocmd VimLeave * :mksession! ~/.vim/Session.vim
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :source ~/.vim/Session.vim | :bd 1 | endif
+"set sessionoptions+=resize,winpos,buffers,tabpages,options
+"autocmd VimLeave * :mksession! ~/.vim/Session.vim
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :source ~/.vim/Session.vim | :bd 1 | endif
 
 """ vim-airline config
 " Display open buffers if only one tab page is open
@@ -28,6 +28,7 @@ set laststatus=2
 " Use tab characters and lett hem be 4 characters wide
 set tabstop=4
 set shiftwidth=4
+set expandtab " for use at apple
 " Line numbers
 set number
 " This lets the background color stay the same inside of tmux/screen
@@ -64,4 +65,5 @@ set foldlevelstart=50
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-
+set mouse=a
+set clipboard=unnamed
