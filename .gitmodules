@@ -49,3 +49,6 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "bundle/python_fold"]
+	path = bundle/python_fold
+	url = git@github.com:vim-scripts/python_fold.git

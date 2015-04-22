@@ -67,3 +67,9 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 
 set mouse=a
 set clipboard=unnamed
+
+" line length
+set colorcolumn=121
+
+let hlstate=0
+nnoremap <F4> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
