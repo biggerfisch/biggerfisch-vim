@@ -23,7 +23,7 @@ set laststatus=2
 " Use tab characters and lett hem be 4 characters wide
 set tabstop=4
 set shiftwidth=4
-set expandtab " for use at apple
+set expandtab " for use at work
 " Line numbers
 set number
 " This lets the background color stay the same inside of tmux/screen
