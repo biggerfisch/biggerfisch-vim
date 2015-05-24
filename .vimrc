@@ -13,11 +13,6 @@ map <C-n> :NERDTreeTabsToggle<CR>
 " Close vim if only a NERDTree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Store session
-"set sessionoptions+=resize,winpos,buffers,tabpages,options
-"autocmd VimLeave * :mksession! ~/.vim/Session.vim
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :source ~/.vim/Session.vim | :bd 1 | endif
-
 """ vim-airline config
 " Display open buffers if only one tab page is open
 let g:airline#extensions#tabline#enabled = 1
@@ -65,11 +60,16 @@ set foldlevelstart=50
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
+"Means mouse is in auto mode (normally on, unless one isn't attached, which is
+"purely your fault.)
 set mouse=a
+
+"Allow using the OS copy/paste. Requires vim compiled with +clipboard
 set clipboard=unnamed
 
 " line length
 set colorcolumn=121
 
+
 let hlstate=0
-nnoremap <F4> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
+nnoremap <F4> :let hlstate=1-hlstate \| if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif<cr>
