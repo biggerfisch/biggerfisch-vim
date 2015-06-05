@@ -52,3 +52,6 @@
 [submodule "bundle/python_fold"]
 	path = bundle/python_fold
 	url = git@github.com:vim-scripts/python_fold.git
+[submodule "bundle/applescript.vim"]
+	path = bundle/applescript.vim
+	url = https://github.com/vim-scripts/applescript.vim
