@@ -82,6 +82,9 @@ map bn :bn<CR>
 map bN :bp<CR>
 map <F5> :bp<CR>
 map <F6> :bn<CR>
+" Map in insert mode too
+map! <F5> <ESC>:bp<CR> 
+map! <F6> <ESC>:bn<CR>
 
 " Search highlighting toggle.
 let hlstate=0
