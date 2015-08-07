@@ -19,11 +19,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 """ vim-airline config
 " Display open buffers if only one tab page is open
 let g:airline#extensions#tabline#enabled = 1
-" No silly characters seps
+" No silly characters separators 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-"I don't care about trailing whitespace
-" defauilt: let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
+" I don't care about trailing whitespace, so only enable indent checking.
+" default: let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
 let g:airline#extensions#whitespace#checks = [ 'indent' ]
 " Always display status line
 set laststatus=2
@@ -62,13 +62,15 @@ set foldlevelstart=50
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-" Means mouse is in auto mode (normally on, unless one isn't attached, which is purely your fault.)
+" Set mouse to auto mode (normally on, unless one isn't attached, which is purely your fault.)
 set mouse=a
 
 " Allow using the OS copy/paste. Requires vim compiled with +clipboard
+" Note that if in tmux on OS X, you'll need other settings in tmux to make
+" this work properly
 set clipboard=unnamed
 
-" Line length. (max == 120)
+" Line length. (max == 120). Set to 121 to put the red line AFTER the last allowed column
 set colorcolumn=121
 
 """ ********************************************************************************************************************
