@@ -73,6 +73,12 @@ set clipboard=unnamed
 " Line length. (max == 120). Set to 121 to put the red line AFTER the last allowed column
 set colorcolumn=121
 
+""" settings for YouCompleteMe
+" Use syntax for completions
+let g:ycm_seed_identifiers_with_syntax = 1
+" Close that stupid complete window after using the suggestion
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 """ ********************************************************************************************************************
 """ ****************************************           Mappings            *********************************************
 """ ********************************************************************************************************************
