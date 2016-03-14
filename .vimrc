@@ -16,6 +16,24 @@ map <C-n> :NERDTreeTabsToggle<CR>
 " Close vim if only a NERDTree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+""" vim-devicons
+set encoding=utf8
+let g:airline_powerline_fonts = 1
+if has("win32") || has("win16")
+    " Windows
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h13
+else
+    let os = substitute(system('uname'), "\n", "", "")
+    if os == "Linux"
+        " Linux
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 13
+    elseif os == "Darwin"
+        " OS X
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h13
+    endif
+endif
+
+
 """ vim-airline config
 " Display open buffers if only one tab page is open
 let g:airline#extensions#tabline#enabled = 1
