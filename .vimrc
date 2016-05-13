@@ -38,6 +38,8 @@ endif
 " Display open buffers if only one tab page is open
 let g:airline#extensions#tabline#enabled = 1
 " No silly characters separators 
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " I don't care about trailing whitespace, so only enable indent checking.
