@@ -48,6 +48,12 @@ let g:airline#extensions#whitespace#checks = [ 'indent' ]
 " Always display status line
 set laststatus=2
 
+"""" vim-notes
+let g:notes_directories = ['~/Box Sync/notes']
+let g:notes_suffix = '.txt'
+let g:notes_smart_quotes = 1
+let g:notes_list_bullets = ['•', '◦', '▸', '▹', '▪', '▫']
+
 """ ********************************************************************************************************************
 """ **************************************** Personal recommended settings *********************************************
 """ ********************************************************************************************************************

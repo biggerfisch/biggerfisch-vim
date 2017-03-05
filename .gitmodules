@@ -58,3 +58,9 @@
 [submodule "bundle/vim-devicons"]
 	path = bundle/zzzzzzzzzz-vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons
+[submodule "bundle/vim-notes"]
+	path = bundle/vim-notes
+	url = https://github.com/xolox/vim-notes.git
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
