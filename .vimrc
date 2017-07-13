@@ -105,6 +105,13 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " Close that stupid complete window after using the suggestion
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+""" Two-space indentation for coffeescript
+autocmd BufNewFile,BufReadPost *.coffee setl ts=2 shiftwidth=2 expandtab
+""" Two-space indentation for DocNetwork JS
+autocmd BufNewFile,BufReadPost /home/averyfischer/doc/* setl ts=2 sw=2 sts=2 expandtab
+
+
+
 """ ********************************************************************************************************************
 """ ****************************************           Mappings            *********************************************
 """ ********************************************************************************************************************
