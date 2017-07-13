@@ -94,7 +94,7 @@ set mouse=a
 " Allow using the OS copy/paste. Requires vim compiled with +clipboard
 " Note that if in tmux on OS X, you'll need other settings in tmux to make
 " this work properly
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Line length. (max == 120). Set to 121 to put the red line AFTER the last allowed column
 set colorcolumn=121
