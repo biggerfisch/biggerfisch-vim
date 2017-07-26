@@ -57,10 +57,16 @@ let g:notes_list_bullets = ['•', '◦', '▸', '▹', '▪', '▫']
 """ ********************************************************************************************************************
 """ **************************************** Personal recommended settings *********************************************
 """ ********************************************************************************************************************
-" Use tab characters and lett hem be 4 characters wide
+" Use tab characters and let them be 4 characters wide
 set tabstop=4
 set shiftwidth=4
-set expandtab " for use at work
+set expandtab " replaces tabs with spaces
+""" Two-space indentation for coffeescript
+autocmd BufNewFile,BufReadPost *.coffee setl ts=2 shiftwidth=2 expandtab
+""" Two-space indentation for DocNetwork JS
+autocmd BufNewFile,BufReadPost ~/doc/* setl ts=2 sw=2 sts=2 expandtab
+autocmd BufNewFile,BufReadPost ~/dn/* setl ts=2 sw=2 sts=2 expandtab
+
 " Line numbers
 set number
 " Allow switching from changed buffers
@@ -94,7 +100,19 @@ set mouse=a
 " Allow using the OS copy/paste. Requires vim compiled with +clipboard
 " Note that if in tmux on OS X, you'll need other settings in tmux to make
 " this work properly
-set clipboard=unnamedplus
+if os == "Linux"
+    " Linux
+    set clipboard=unnamedplus
+    """ allows copying a github link to clipboard register
+    let g:vimgurl_yank_register = '+'
+elseif os == "Darwin"
+    " OS X
+    set clipboard=unnamed
+    """ allows copying a github link to clipboard register
+    let g:vimgurl_yank_register = '*'
+else
+    set clipboard=unnamedplus
+endif
 
 " Line length. (max == 120). Set to 121 to put the red line AFTER the last allowed column
 set colorcolumn=121
@@ -105,12 +123,9 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " Close that stupid complete window after using the suggestion
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-""" Two-space indentation for coffeescript
-autocmd BufNewFile,BufReadPost *.coffee setl ts=2 shiftwidth=2 expandtab
-""" Two-space indentation for DocNetwork JS
-autocmd BufNewFile,BufReadPost /home/averyfischer/doc/* setl ts=2 sw=2 sts=2 expandtab
-
-
+""" It seems that due to some interaction with NerdTree, closing a buffer with a NerdTree open causes vim to quit
+""" This attempts to solve that by switching back to the prev buffer before closing one
+cnoreabbrev bd bp<bar>bd#
 
 """ ********************************************************************************************************************
 """ ****************************************           Mappings            *********************************************

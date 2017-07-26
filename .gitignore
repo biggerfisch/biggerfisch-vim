@@ -2,3 +2,4 @@ autoload/*
 .*.swp
 Session.vim
 spell/
+.netrwhist
