@@ -70,3 +70,9 @@
 [submodule "bundle/vim-gurl"]
 	path = bundle/vim-gurl
 	url = https://github.com/vitapluvia/vim-gurl.git
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "bundle/vim-rhubarb"]
+	path = bundle/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git

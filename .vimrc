@@ -13,6 +13,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Map Ctrl+n to toggle NERDTree on all tabs
 map <C-n> :NERDTreeTabsToggle<CR>
+" Map Ctrl+m to open current file in NerdTree
+map <C-m> :NERDTreeFind<CR>
 " Close vim if only a NERDTree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -54,6 +56,9 @@ let g:notes_suffix = '.txt'
 let g:notes_smart_quotes = 1
 let g:notes_list_bullets = ['•', '◦', '▸', '▹', '▪', '▫']
 
+""" Vim-gitgutter
+let g:gitgutter_max_signs = 1000  " default value = 500
+
 """ ********************************************************************************************************************
 """ **************************************** Personal recommended settings *********************************************
 """ ********************************************************************************************************************
@@ -67,6 +72,9 @@ autocmd BufNewFile,BufReadPost *.coffee setl ts=2 shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost ~/doc/* setl ts=2 sw=2 sts=2 expandtab
 autocmd BufNewFile,BufReadPost ~/dn/* setl ts=2 sw=2 sts=2 expandtab
 
+""" Makefiles need tabs
+autocmd BufNewFile,BufReadPost Makefile setl ts=2 shiftwidth=2 noexpandtab
+
 " Line numbers
 set number
 " Allow switching from changed buffers
@@ -79,9 +87,16 @@ if &term =~ '256color'
 	set t_ut=
 	" Preferred colorscheme
 	colorscheme 256-jungle
+
+    " Sets background transparent
+    highlight Normal ctermbg=none
 endif
 
 " folding
+
+" coffeescript folds by indentation
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
 augroup vimrc
 	au BufReadPre * setlocal foldmethod=syntax
 "	au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
@@ -149,3 +164,7 @@ nnoremap <F4> :let hlstate=1-hlstate \| if (hlstate == 0) \| nohlsearch \| else 
 " Map save to Space + W
 nnoremap <Leader>w :w<CR>
 
+""" Function for format JSON
+function! FormatJSON()
+:%!python -m json.tool
+endfunction
