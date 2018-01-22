@@ -9,8 +9,8 @@ filetype plugin indent on
 """ ********************************************************************************************************************
 """ NERDTree config
 " If no files given, open a NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Map Ctrl+n to toggle NERDTree on all tabs
 map <C-n> :NERDTreeTabsToggle<CR>
 " Map Ctrl+m to open current file in NerdTree
@@ -58,6 +58,26 @@ let g:notes_list_bullets = ['•', '◦', '▸', '▹', '▪', '▫']
 
 """ Vim-gitgutter
 let g:gitgutter_max_signs = 1000  " default value = 500
+
+""" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': '',
+  \ }
+
+" If no files to open, open ctrlp
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | CtrlP | endif
+
+""" undotree
+if has("persistent_undo")
+    set undodir=~/.vim/.undodir
+    set undofile
+endif
 
 """ ********************************************************************************************************************
 """ **************************************** Personal recommended settings *********************************************
@@ -138,6 +158,12 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " Close that stupid complete window after using the suggestion
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+""" local vimrc
+" strange name to prevent generalized attacks via `.vimrc`
+let g:localvimrc_name=".vimbiggerfischlocal"
+" since I name them strangely no need to ask
+let g:localvimrc_ask=0
+
 """ It seems that due to some interaction with NerdTree, closing a buffer with a NerdTree open causes vim to quit
 """ This attempts to solve that by switching back to the prev buffer before closing one
 cnoreabbrev bd bp<bar>bd#
@@ -149,8 +175,8 @@ cnoreabbrev bd bp<bar>bd#
 let mapleader = "\<Space>"
 
 " Buffer mappings
-map bn :bn<CR>
-map bN :bp<CR>
+"map bn :bn<CR>
+"map bN :bp<CR>
 map <F5> :bp<CR>
 map <F6> :bn<CR>
 " Map in insert mode too
@@ -168,3 +194,19 @@ nnoremap <Leader>w :w<CR>
 function! FormatJSON()
 :%!python -m json.tool
 endfunction
+
+""" Toggle undotree view
+nnoremap <F7> :UndotreeToggle<CR>
+
+""" Highlights
+" HL current line
+nnoremap <silent> <Leader>l :exe "let m = matchadd('WildMenu','\\%" . line('.') . "l')"<CR>
+" clear HLs
+nnoremap <silent> <Leader><CR> :call clearmatches()<CR>
+
+""" Enables SAFE execution of project specific vimrcs. SHOULD STILL CHECK
+""" EVERY SINGLE PROJECT FOR VIMRCs YOU DO NOT CREATE.
+set secure
+" strange name to prevent generalized attacks via `.vimrc`
+"silent! so .vimbiggerfischlocal
+
