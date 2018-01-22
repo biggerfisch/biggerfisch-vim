@@ -82,3 +82,12 @@
 [submodule "bundle/tpope-vim-abolish"]
 	path = bundle/tpope-vim-abolish
 	url = git@github.com:tpope/tpope-vim-abolish.git
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = git@github.com:mbbill/undotree.git
+[submodule "bundle/vim-localvimrc"]
+	path = bundle/vim-localvimrc
+	url = git@github.com:embear/vim-localvimrc.git
+[submodule "bundle/vim-eunuch"]
+	path = bundle/vim-eunuch
+	url = git@github.com:tpope/vim-eunuch.git
