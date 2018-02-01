@@ -168,6 +168,12 @@ let g:localvimrc_ask=0
 """ This attempts to solve that by switching back to the prev buffer before closing one
 cnoreabbrev bd bp<bar>bd#
 
+""" Templates
+augroup templates
+    " Auto read in the skeleton of the currect extension, if it exists
+    autocmd BufNewFile *.* silent! execute '0r ~/.vim/templates/skeleton.'.expand("<afile>:e")
+augroup END
+
 """ ********************************************************************************************************************
 """ ****************************************           Mappings            *********************************************
 """ ********************************************************************************************************************
