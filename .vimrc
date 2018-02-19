@@ -213,6 +213,5 @@ nnoremap <silent> <Leader><CR> :call clearmatches()<CR>
 """ Enables SAFE execution of project specific vimrcs. SHOULD STILL CHECK
 """ EVERY SINGLE PROJECT FOR VIMRCs YOU DO NOT CREATE.
 set secure
-" strange name to prevent generalized attacks via `.vimrc`
-"silent! so .vimbiggerfischlocal
 
+nnoremap <Leader>j A<CR>console.log('<ESC>pa', <ESC>pa);<ESC>==
