@@ -69,7 +69,7 @@
 	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/vim-gurl"]
 	path = bundle/vim-gurl
-	url = https://github.com/vitapluvia/vim-gurl.git
+	url = https://github.com/biggerfisch/vim-gurl.git
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -91,3 +91,6 @@
 [submodule "bundle/vim-eunuch"]
 	path = bundle/vim-eunuch
 	url = git@github.com:tpope/vim-eunuch.git
+[submodule "bundle/dbext.vim"]
+	path = bundle/dbext.vim
+	url = https://github.com/vim-scripts/dbext.vim
