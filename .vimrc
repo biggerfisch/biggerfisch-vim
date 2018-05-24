@@ -99,6 +99,9 @@ autocmd BufNewFile,BufReadPost ~/dn/* setl ts=2 sw=2 sts=2 expandtab
 """ Makefiles need tabs
 autocmd BufNewFile,BufReadPost Makefile setl ts=2 shiftwidth=2 noexpandtab
 
+""" Markdown settings
+autocmd BufNewFile,BufReadPost *.md setl spell spelllang=en_us
+
 " Line numbers
 set number
 " Allow switching from changed buffers
@@ -219,3 +222,6 @@ nnoremap <silent> <Leader><CR> :call clearmatches()<CR>
 set secure
 
 nnoremap <Leader>j A<CR>console.log('<ESC>pa', <ESC>pa);<ESC>==
+
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
