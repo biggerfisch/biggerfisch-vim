@@ -94,3 +94,9 @@
 [submodule "bundle/dbext.vim"]
 	path = bundle/dbext.vim
 	url = https://github.com/vim-scripts/dbext.vim
+[submodule "bundle/vim-jsdoc"]
+	path = bundle/vim-jsdoc
+	url = git@github.com:heavenshell/vim-jsdoc.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized.git

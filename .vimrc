@@ -64,7 +64,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules|\v[\/]_site',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': '',
   \ }
