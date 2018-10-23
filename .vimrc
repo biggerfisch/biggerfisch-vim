@@ -14,7 +14,7 @@ filetype plugin indent on
 " Map Ctrl+n to toggle NERDTree on all tabs
 map <C-n> :NERDTreeTabsToggle<CR>
 " Map Ctrl+m to open current file in NerdTree
-map <C-m> :NERDTreeFind<CR>
+nnoremap <C-m> :NERDTreeFind<CR>
 " Close vim if only a NERDTree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -171,6 +171,10 @@ let g:localvimrc_name=".vimbiggerfischlocal"
 " since I name them strangely no need to ask
 let g:localvimrc_ask=0
 
+""" testfile
+let g:testfile_search_expr = '\(.*\)\(js\|coffee\)$'
+let g:testfile_replace_expr = '__tests__/\1unit.\2'
+
 """ It seems that due to some interaction with NerdTree, closing a buffer with a NerdTree open causes vim to quit
 """ This attempts to solve that by switching back to the prev buffer before closing one
 cnoreabbrev bd bp<bar>bd#
@@ -222,6 +226,7 @@ nnoremap <silent> <Leader><CR> :call clearmatches()<CR>
 set secure
 
 nnoremap <Leader>j A<CR>console.log('<ESC>pa', <ESC>pa);<ESC>==
+nnoremap <Leader>T :call testfile#FindAndOpenExisting()<CR>
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'

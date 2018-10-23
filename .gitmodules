@@ -100,3 +100,9 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "bundle/tern_for_vim"]
+	path = bundle/tern_for_vim
+	url = git@github.com:ternjs/tern_for_vim.git
+[submodule "bundle/vim-testfile"]
+	path = bundle/vim-testfile
+	url = git@github.com:biggerfisch/vim-testfile.git
