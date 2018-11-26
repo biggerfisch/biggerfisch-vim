@@ -95,6 +95,8 @@ autocmd BufNewFile,BufReadPost *.coffee setl ts=2 shiftwidth=2 expandtab
 """ Two-space indentation for DocNetwork JS
 autocmd BufNewFile,BufReadPost ~/doc/* setl ts=2 sw=2 sts=2 expandtab
 autocmd BufNewFile,BufReadPost ~/dn/* setl ts=2 sw=2 sts=2 expandtab
+""" Four-spaces for C files
+autocmd BufNewFile,BufReadPost *.c setl ts=4 sw=4 sts=4 expandtab
 
 """ Makefiles need tabs
 autocmd BufNewFile,BufReadPost Makefile setl ts=2 shiftwidth=2 noexpandtab
