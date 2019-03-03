@@ -90,13 +90,12 @@ endif
 set tabstop=4
 set shiftwidth=4
 set expandtab " replaces tabs with spaces
-""" Two-space indentation for coffeescript
+""" Two-space indentation for js and coffeescript
 autocmd BufNewFile,BufReadPost *.coffee setl ts=2 shiftwidth=2 expandtab
-""" Two-space indentation for DocNetwork JS
-autocmd BufNewFile,BufReadPost ~/doc/* setl ts=2 sw=2 sts=2 expandtab
-autocmd BufNewFile,BufReadPost ~/dn/* setl ts=2 sw=2 sts=2 expandtab
-""" Four-spaces for C files
+autocmd BufNewFile,BufReadPost *.js setl ts=2 sw=2 sts=2 expandtab
+""" Four-spaces for C/go files
 autocmd BufNewFile,BufReadPost *.c setl ts=4 sw=4 sts=4 expandtab
+autocmd BufNewFile,BufReadPost *.go setl ts=4 sw=4 sts=4 noexpandtab
 
 """ Makefiles need tabs
 autocmd BufNewFile,BufReadPost Makefile setl ts=2 shiftwidth=2 noexpandtab
