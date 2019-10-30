@@ -1,5 +1,6 @@
 """ Pathogen start
 execute pathogen#infect()
+call pathogen#helptags()
 " Recommended settings
 syntax on
 filetype plugin indent on
@@ -64,8 +65,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules|\v[\/]_site',
-  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules|\v[\/]_site|\v[\/]htmlcov',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ 'link': '',
   \ }
 
@@ -78,6 +79,9 @@ if has("persistent_undo")
     set undodir=~/.vim/.undodir
     set undofile
 endif
+
+""" vim-javascript
+let g:javascript_plugin_jsdoc = 1
 
 """ dbext
 
@@ -103,6 +107,10 @@ autocmd BufNewFile,BufReadPost Makefile setl ts=2 shiftwidth=2 noexpandtab
 """ Markdown settings
 autocmd BufNewFile,BufReadPost *.md setl spell spelllang=en_us
 
+""" yaml wants 2 spaces. Well, mine does.
+autocmd BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " Line numbers
 set number
 " Allow switching from changed buffers
@@ -124,6 +132,8 @@ endif
 
 " coffeescript folds by indentation
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+" So does python
+autocmd BufNewFile,BufReadPost *.py setl foldmethod=indent nofoldenable
 
 augroup vimrc
 	au BufReadPre * setlocal foldmethod=syntax
@@ -165,16 +175,16 @@ set colorcolumn=121
 let g:ycm_seed_identifiers_with_syntax = 1
 " Close that stupid complete window after using the suggestion
 let g:ycm_autoclose_preview_window_after_completion = 1
+" Don't ask to load config
+let g:ycm_confirm_extra_conf = 0
+" Force map to tab
+"let g:ycm_key_invoke_completion = '<Tab>'
 
 """ local vimrc
 " strange name to prevent generalized attacks via `.vimrc`
 let g:localvimrc_name=".vimbiggerfischlocal"
 " since I name them strangely no need to ask
 let g:localvimrc_ask=0
-
-""" testfile
-let g:testfile_search_expr = '\(.*\)\(js\|coffee\)$'
-let g:testfile_replace_expr = '__tests__/\1unit.\2'
 
 """ It seems that due to some interaction with NerdTree, closing a buffer with a NerdTree open causes vim to quit
 """ This attempts to solve that by switching back to the prev buffer before closing one
@@ -231,3 +241,6 @@ nnoremap <Leader>T :call testfile#FindAndOpenExisting()<CR>
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
