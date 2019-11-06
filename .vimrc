@@ -14,8 +14,8 @@ filetype plugin indent on
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Map Ctrl+n to toggle NERDTree on all tabs
 map <C-n> :NERDTreeTabsToggle<CR>
-" Map Ctrl+m to open current file in NerdTree
-nnoremap <C-m> :NERDTreeFind<CR>
+" Map Space+m to open current file in NerdTree
+"nnoremap <Leader>m :NERDTreeFind<CR>
 " Close vim if only a NERDTree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -87,6 +87,39 @@ let g:javascript_plugin_jsdoc = 1
 
 " PUT DBEXT CONFIG HERE OR IN ~/??/.vimbiggerfischlocal
 
+""" flake8
+" don't let it bind keys
+let g:no_flake8_maps=1
+
+" This function closes the flake8 quickfix window if open and runs it if closed
+if !exists('*ToggleFlake8')
+    function ToggleFlake8()
+        let qfn = filter(range(1, winnr('$')), 'getwinvar(v:val, "&ft") == "qf"')
+        if len(qfn) > 0
+            exe qfn[0] . 'wincmd c'
+        else
+            call Flake8()
+        endif
+    endfunction
+endif
+
+"" map it to F3 instead (I use F7 for undotree)
+" These two are for the toggle function.
+"autocmd FileType python map <silent> <buffer> <F3> :call ToggleFlake8()<CR>
+autocmd FileType qf map <silent> <buffer> <F3> :call ToggleFlake8()<CR>
+autocmd FileType python map <silent> <buffer> <F3> :call flake8#Flake8()<CR>
+
+let g:flake8_show_quickfix=1 " show window
+
+""" python-mode
+let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_max_line_length = 120
+let g:pymode_motion = 1
+let g:pymode_lint = 0 " Use our own
+let g:pymode_rope_completion = 0 " Use YouCompleteMe
+
+"""let g:pymode_options_max_line_length = 7
 """ ********************************************************************************************************************
 """ **************************************** Personal recommended settings *********************************************
 """ ********************************************************************************************************************
