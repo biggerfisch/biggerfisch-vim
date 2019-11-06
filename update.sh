@@ -17,7 +17,9 @@ function error_exit
 git pull 
 
 git submodule init || error_exit 'Could not init submodules'
+git submodule sync --recursive
 git submodule foreach git checkout master || error_exit 'Could not checkout master on one or more plugins!'
+(cd bundle/python-mode && git checkout develop) || error_exit 'Could not use develop for python-mode'
 git submodule foreach git pull --ff || error_exit 'Could not update one or more plugins'
 git submodule foreach git submodule update --init --recursive || error_exit "Could not update plugin reqs"
 
