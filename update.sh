@@ -24,7 +24,7 @@ git submodule foreach git pull --ff || error_exit 'Could not update one or more 
 git submodule foreach git submodule update --init --recursive || error_exit "Could not update plugin reqs"
 
 cd bundle/YouCompleteMe/ && \
-    ./install.py --go-completer --ts-completer --clang-completer && \
+    ./install.py --go-completer --ts-completer --js-completer --clang-completer && \
     cd ../../;
 cd bundle/tern_for_vim/ && npm install && rm package-lock.json && cd ../../
 echo -e "${green}Done!${NC}"
