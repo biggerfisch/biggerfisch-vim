@@ -65,7 +65,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules|\v[\/]_site|\v[\/]htmlcov',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules|\v[\/]_site|\v[\/]htmlcov|\v[\/]vendor',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ 'link': '',
   \ }
@@ -116,6 +116,7 @@ let g:pymode_python = 'python3'
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options_max_line_length = 120
 let g:pymode_motion = 1
+let g:pymode_run = 0 " Running can be too dangerous
 let g:pymode_lint = 0 " Use our own
 let g:pymode_rope_completion = 0 " Use YouCompleteMe
 
@@ -190,6 +191,7 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 
 " Set mouse to auto mode (normally on, unless one isn't attached, which is purely your fault.)
 set mouse=a
+set ttymouse=sgr
 
 " Allow using the OS copy/paste. Requires vim compiled with +clipboard
 " Note that if in tmux on OS X, you'll need other settings in tmux to make
