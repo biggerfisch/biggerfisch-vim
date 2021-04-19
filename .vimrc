@@ -119,6 +119,14 @@ let g:pymode_motion = 1
 let g:pymode_lint = 0 " Use our own
 let g:pymode_rope_completion = 0 " Use YouCompleteMe
 
+
+""" vim-rhubarb
+" Hack the creds logic by giving variables that exist but set to empty, should
+" use .netrc instead like was originally intended
+let g:github_user = ''
+let g:github_password = ''
+
+
 """let g:pymode_options_max_line_length = 7
 """ ********************************************************************************************************************
 """ **************************************** Personal recommended settings *********************************************
